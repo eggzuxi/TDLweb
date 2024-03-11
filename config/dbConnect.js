@@ -1,18 +1,13 @@
-// const { MongoClient } = require('mongodb');
-// const uri = process.env.DB_ATLAS_URL;
+const mongoose = require("mongoose");
+require("dotenv").config();
 
-// const client = new MongoClient(uri);
-// const dbName = 'test';
+const dbConnect = async () => {
+  try {
+    const connect = await mongoose.connect(process.env.DB_ATLAS_URI);
+    console.log("DB connected");
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-// async function main() {
-//    await client.connect();
-//    console.log('Connected successfully to server');
-//    const db = client.db(dbName);
-//    const collection = db.collection('user');
-//    return 'done.';
-// }
-
-// main()
-// .then(console.log)
-// .catch(console.error)
-// .finally(() => client.close());
+module.exports = dbConnect;
