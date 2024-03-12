@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const {getLogin,loginUser,logout} = require("../controllers/loginController")
+const {getLogin,loginUser} = require("../controllers/loginController")
+// logout 추가?
 
 router.route("/login").get(getLogin).post(loginUser)
-router.route("/logout").get(logout);
+// router.route("/logout").get(logout);
 
 module.exports = router;

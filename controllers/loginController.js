@@ -1,11 +1,12 @@
 //@desc Get Login Page
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 require("dotenv").config();
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 // const jwtSecret = process.env.JWT_SECRET;
 
+//@desc get login
 //@route GET / 
 const getLogin = (req,res) => {
   res.render("login");
@@ -13,31 +14,33 @@ const getLogin = (req,res) => {
 
 //@desc Login User
 //@route POST /
-const loginUser = asyncHandler(async(req,res)=> {
-  // console.log(req.body);
-  const {email,password} = req.body;
-  const user = await User.findOne({email})
-  if(!user){
-    return res.status(401).json({message:"일치하는 사용자가 없습니다."})
+const loginUser = (req,res)=> {
+  const {Email, password} = req.body;
+  if (!Email || !password) {
+    return res.status(400).send("이메일 또는 비밀번호를 입력해주세요.");
   }
-  const isMatch = await bcrypt.compare(password,user.password1);
-  if(!isMatch){
-    return res.status(401).json({message:"비밀번호가 일치하지 않습니다."})
+  if (Email === "Email" && password === "password") {
+    req.session.Email = Email;
+    return res.render("/todo");
   }
-  const token = jwt.sign({id:user.email},jwtSecret)
-  res.cookie("token",token,{httpOnly:true})
-  res.redirect("/contacts")
-  // if (username === "admin" && password === "1234"){
-  //   res.send("로그인 성공")
-  // }else {
-  //   res.send("로그인 실패")
-  // }
-});
+  res.send("이메일 또는 비밀번호를 다시 확인하세요.");
+  res.redirect("/login")
+};
+
+// app.get("/dashboard", function(req, res) {
+//   const Email = req.session.Email;
+//   if (!Email) {
+//     return res.status(401).send("Unauthorized");
+//   }
+  
+//   res.render("dashboard", { Email }); // Render dashboard.ejs with Email passed as data
+// });
 
 //@desc Logout
 //@route ? /
-const logout = (req,res) => {
-  res.clearCookie("token");
-  res.redirect('/')
-}
-module.exports = {getLogin,loginUser,logout};
+// const logout = (req,res) => {
+//   res.clearCookie("token");
+//   res.redirect('/')
+// }
+module.exports = {getLogin,loginUser};
+// logout
