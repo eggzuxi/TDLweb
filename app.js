@@ -53,9 +53,11 @@ app.get("/dashboard", function(req, res) {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use("/login",require("./routes/loginRoutes"));
+app.use("/register",require("./routes/registerRoutes"));
 
-app.use("/",require("./routes/loginRoutes"));
-// app.use("/contacts", require("./routes/contactRoutes"));
+// app.use("/",require("./routes/loginRoutes"));
+app.use("/contacts", require("./routes/contactRoutes"));
 
 app.listen(PORT, () => {
   console.log(`Server listening from http://localhost:${PORT}`);
