@@ -1,17 +1,15 @@
 const asyncHandler = require("express-async-handler");
-const List = require("../models/listModel");
+const List = require("../models/todoModel");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
-const jwt = require("jsonwebtoken");
-const jwtSecret = process.env.JW_SECRET
 
 
-const getAllList = asyncHandler(async(req,res)=>{
+const getAllTodo = asyncHandler(async(req,res)=>{
   const contacts = await List.find();
-  res.render("todo",{contacts:contacts})
+  res.render("todo",{todo:contacts})
 });
 
-const createList = asyncHandler(async(req,res)=>{
+const createTodo = asyncHandler(async(req,res)=>{
   const {title,body} = req.body;
   console.log(req.body)
   if(!title||!body){
@@ -21,7 +19,7 @@ const createList = asyncHandler(async(req,res)=>{
   res.status(201).send("리스트 추가");
 });
 
-const updateList = asyncHandler(async(req,res)=>{
+const updateTodo = asyncHandler(async(req,res)=>{
   const id= req.params.id;
   const {title,body}= req.body;
   const contact = await Contact.findById(id);
@@ -31,10 +29,10 @@ const updateList = asyncHandler(async(req,res)=>{
   res.status(200).send(`Update Contact for ID: ${req.params.id}`);
 });
 
-const deleteList = asyncHandler(async(req,res)=>{
+const deleteTodo = asyncHandler(async(req,res)=>{
   const id = req.params.id;
   const contact = await List.findByIdAndDelete(id);
   res.status(200).send(`Delete Contact for Id:${req.params.id}`);
 });
 
-module.exports = {getAllList,createList,updateList,deleteList};
+module.exports = {getAllTodo,createTodo,updateTodo,deleteTodo};
