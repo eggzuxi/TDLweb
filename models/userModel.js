@@ -6,11 +6,11 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    email: {
+    Email: {
       type: String,
       required: true,
     },
-    password1: {
+    password: {
       type: String,
       required: true,
     },
@@ -22,6 +22,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("Users", userSchema);
 
 module.exports = User;
