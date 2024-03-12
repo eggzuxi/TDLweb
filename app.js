@@ -58,6 +58,7 @@ app.use("/register",require("./routes/registerRoutes"));
 
 // app.use("/",require("./routes/loginRoutes"));
 app.use("/contacts", require("./routes/contactRoutes"));
+app.use("/lists", require("./routes/listRoutes"));
 
 app.listen(PORT, () => {
   console.log(`Server listening from http://localhost:${PORT}`);

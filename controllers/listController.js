@@ -7,8 +7,8 @@ const jwtSecret = process.env.JW_SECRET
 
 
 const getAllList = asyncHandler(async(req,res)=>{
-  const Lists = await List.find();
-  res.render("todo",{})
+  const contacts = await List.find();
+  res.render("todo",{contacts:contacts})
 });
 
 const createList = asyncHandler(async(req,res)=>{
