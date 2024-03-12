@@ -7,7 +7,7 @@ const Contact = require("../models/contactModel");
 const getAllContacts = asyncHandler(async (req, res) => {
   const contacts = await Contact.find({});
   // res.status(200).render("getAll",{heading:"User List", contacts:contacts});
-  res.render("index",{contacts:contacts})
+  res.render("main",{contacts:contacts})
 });
 
 // @desc view add contacts form
