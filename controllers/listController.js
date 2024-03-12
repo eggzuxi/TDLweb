@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const List = require("../model/listModel");
+const List = require("../models/listModel");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
