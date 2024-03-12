@@ -8,7 +8,7 @@ const jwtSecret = process.env.JWT_SECRET;
 
 //@route GET / 
 const getLogin = (req,res) => {
-  res.render("home");
+  res.render("main");
 }
 
 //@desc Login User
