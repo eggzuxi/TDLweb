@@ -18,18 +18,18 @@ app.use(session({ secret: "your_secret_key", resave: true, saveUninitialized: tr
 const PORT = 3000;
 dbConnect();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-app.use("/login",require("./routes/loginRoutes"));
-app.use("/register",require("./routes/registerRoutes"));
+app.use("/login",require("./routes/loginRoutes.js"));
+app.use("/register",require("./routes/registerRoutes.js"));
 
 // app.use("/",require("./routes/loginRoutes"));
-app.use("/", require("./routes/contactRoutes"));
+// app.use("/", require("./routes/contactRoutes"));
 
 app.listen(PORT, () => {
   console.log(`Server listening from http://localhost:${PORT}`);
