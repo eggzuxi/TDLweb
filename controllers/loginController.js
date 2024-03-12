@@ -7,13 +7,13 @@ const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JWT_SECRET;
 
 //@desc get login
-//@route GET /login
+//@route GET /
 const getLogin = (req,res) => {
   res.render("login");
 }
 
 //@desc Login User
-//@route POST /login
+//@route POST /
 const loginUser = (req,res)=> {
   const {Email, password} = req.body;
   const user = User.findOne({Email})
@@ -22,10 +22,10 @@ const loginUser = (req,res)=> {
   }
   if (Email === "Email" && password === "password") {
     req.session.Email = Email;
-    return res.render("todo");
+    return res.render("todo",{todo:contacts});
   }
   res.send("이메일 또는 비밀번호를 다시 확인하세요.");
-  res.redirect("login")
+  res.redirect("/")
 };
 
 //@desc Login User

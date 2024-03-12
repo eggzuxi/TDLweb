@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
-// const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 //@desc get register
 //@route GET /
