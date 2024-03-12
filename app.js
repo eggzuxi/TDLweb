@@ -1,5 +1,5 @@
 const express = require("express");
-// const errorHandler = require("./middlewares/errorHandler");
+const errorHandler = require("./middlewares/errorHandler");
 const dbConnect = require("./config/dbConnect");
 const methodOverride = require("method-override");
 const app = express();
@@ -19,7 +19,8 @@ dbConnect();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/",require("./routes/loginRoutes"));
+app.use("/login",require("./routes/loginRoutes"));
+app.use("/register",require("./routes/registerRoutes"));
 // app.use("/contacts", require("./routes/contactRoutes"));
 
 app.listen(PORT, () => {
