@@ -4,6 +4,7 @@ const session = require("express-session");
 const errorHandler = require("./middlewares/errorHandler");
 const dbConnect = require("./config/dbConnect");
 const methodOverride = require("method-override");
+const checkLogin = require("./middlewares/checkLogin.js");
 const app = express();
 
 app.set("view engine","ejs");

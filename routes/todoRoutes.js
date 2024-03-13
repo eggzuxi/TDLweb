@@ -7,9 +7,9 @@ router.use(cookieParser());
 
 router
   .route("/")
-  .get(checkLogin,getAllTodo)
-  .post(checkLogin,createTodo)
-  .put(checkLogin,updateTodo)
-  .delete(checkLogin,deleteTodo)
+  .get(checkLogin, getAllTodo)
+  .post(checkLogin, createTodo)
+  .put(checkLogin, updateTodo)
+  .delete(checkLogin, deleteTodo)
 
 module.exports = router;
