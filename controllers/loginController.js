@@ -1,4 +1,3 @@
-//@desc Get Login Page
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const Todo = require("../models/todoModel");
@@ -8,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const jwtSecret = process.env.JW_SECRET;
 
 
-//@desc get login
+//@desc get login page
 //@route GET /
 const getLogin = (req,res) => {
   res.render("login");
@@ -33,10 +32,8 @@ const loginUser = asyncHandler (async(req,res)=> {
   }
   const token = jwt.sign({Email:user.Email},jwtSecret);
   res.cookie("token",token,{httpOnly:true});
-  // console.log(Todo)
-  const contacts = await todo.find();
-
   res.redirect("/todo");
 });
 
 module.exports = {getLogin,loginUser};
+// logout
