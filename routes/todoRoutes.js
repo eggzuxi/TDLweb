@@ -1,14 +1,15 @@
 const express = require("express");
 const {getAllTodo,createTodo,updateTodo,deleteTodo} = require("../controllers/todoController");
 const cookieParser = require("cookie-parser");
+const checkLogin = require("../middlewares/checkLogin");
 const router = express.Router();
 router.use(cookieParser());
 
 router
   .route("/")
-  .get(getAllTodo)
-  .post(createTodo)
-  .put(updateTodo)
-  .delete(deleteTodo)
+  .get(checkLogin, getAllTodo)
+  .post(checkLogin, createTodo)
+  .put(checkLogin, updateTodo)
+  .delete(checkLogin, deleteTodo)
 
 module.exports = router;
