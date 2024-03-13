@@ -11,6 +11,7 @@ body {
   margin-bottom: 200px;
 }
 
+
 #login{
   padding: 15px 120px;
   background-color: #90B1DB;
@@ -48,5 +49,7 @@ button {
 }
 
 #contents{
+  font-size: 35px;
   margin-top: 400px;
+  margin-bottom: 10px;
 }

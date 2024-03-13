@@ -5,7 +5,8 @@ const Todo = require("../models/todoModel");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
-const jwtSecret = process.env.JWT_SECRET;
+const jwtSecret = process.env.JW_SECRET;
+
 
 //@desc get login
 //@route GET /
@@ -15,22 +16,18 @@ const getLogin = (req,res) => {
 
 //@desc Login User
 //@route POST /
-// const loginUser = (req,res)=> {};
-
-//@desc Login User
-//@route POST /
-const loginUser = asyncHandler(async(req,res)=> {
-  console.log(req.body);
+const loginUser = asyncHandler (async(req,res)=> {
+  console.log("req바디임",req.body);
   const {Email,password} = req.body;
-  const user = await User.findOne({Email});
-  const todo = await Todo.findOne({Email});
-  // console.log(user);
+
+  const user = await User.findOne({Email})
+  console.log(user);
   if(!user){
     return res.status(401).send("일치하는 사용자가 없습니다.");
   }
-  // console.log(typeof(password), typeof(user.password))
-  // const isMatch = await bcrypt.compare(password,user.password); //로그인 기능 어떻게든 좀 만들어오기......
-  // console.log(user.Email, Email)
+  const isMatch = await bcrypt.compare(password,user.password);
+  console.log(password,user.password );
+  console.log(`isMatch = ${isMatch}`);
   if(!isMatch){
     return res.status(401).send("비밀번호가 일치하지 않습니다.")
   }
@@ -38,15 +35,8 @@ const loginUser = asyncHandler(async(req,res)=> {
   res.cookie("token",token,{httpOnly:true});
   // console.log(Todo)
   const contacts = await todo.find();
-  res.render("todo",{todo:contacts});
+
+  res.redirect("/todo");
 });
 
-//@desc Logout
-//@route ? /
-// const logout = (req,res) => {
-//   res.clearCookie("token");
-//   res.redirect('/')
-// }
-
 module.exports = {getLogin,loginUser};
-// logout
