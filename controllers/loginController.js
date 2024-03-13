@@ -1,6 +1,7 @@
 //@desc Get Login Page
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
+const Todo = require("../models/todoModel");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
@@ -21,20 +22,22 @@ const getLogin = (req,res) => {
 const loginUser = asyncHandler(async(req,res)=> {
   console.log(req.body);
   const {Email,password} = req.body;
-  const user = await User.findOne({Email})
+  const user = await User.findOne({Email});
+  const todo = await Todo.findOne({Email});
   // console.log(user);
   if(!user){
     return res.status(401).send("일치하는 사용자가 없습니다.");
   }
-  console.log(typeof(password), typeof(user.password))
-  const isMatch = await bcrypt.compare(password,user.password);
+  // console.log(typeof(password), typeof(user.password))
+  // const isMatch = await bcrypt.compare(password,user.password); //로그인 기능 어떻게든 좀 만들어오기......
   // console.log(user.Email, Email)
   if(!isMatch){
     return res.status(401).send("비밀번호가 일치하지 않습니다.")
   }
   const token = jwt.sign({Email:user.Email},jwtSecret);
   res.cookie("token",token,{httpOnly:true});
-  const contacts = await Todo.find();
+  // console.log(Todo)
+  const contacts = await todo.find();
   res.render("todo",{todo:contacts});
 });
 
