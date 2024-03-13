@@ -5,23 +5,17 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 // const jwt = require("jsonwebtoken");
 
-//@desc get register
 //@route GET /
 const getRegister = (req,res) => {
-  res.render("join");
+  res.render("register");
 };
 
 //@desc Register User
 //@route POST /
 const registerUser = asyncHandler(async(req,res) => {
-  const {name,email,password1,password2} = req.body;
-  if(password1 === password2){
-    const hashedPassword = await bcrypt.hash(password,10);
-    const user = await User.create({email, password:hashedPassword});
-    res.status(201).json({message:"등록성공",user})
-  }else{
-    res.send("등록실패")
-  }
+  const {name,Email,password} = req.body;
+  const user = await User.create({name, Email, password});
+  res.status(200).send(`${user.name}님, 환영합니다.`)
 });
 
 module.exports = {getRegister,registerUser};
