@@ -26,7 +26,7 @@ const loginUser = asyncHandler(async(req,res)=> {
   if(!user){
     return res.status(401).send("일치하는 사용자가 없습니다.");
   }
-  // console.log(password, user.password)
+  console.log(typeof(password), typeof(user.password))
   const isMatch = await bcrypt.compare(password,user.password);
   // console.log(user.Email, Email)
   if(!isMatch){
