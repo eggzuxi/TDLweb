@@ -5,7 +5,6 @@ const bcrypt = require("bcrypt");
 require("dotenv").config();
 // const jwt = require("jsonwebtoken");
 
-//@desc get register
 //@route GET /
 const getRegister = (req,res) => {
   res.render("register");
