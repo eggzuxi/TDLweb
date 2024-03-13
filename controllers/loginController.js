@@ -19,6 +19,7 @@ const getLogin = (req,res) => {
 
 //@desc Login User
 //@route POST /
+<<<<<<< HEAD
 const loginUser = asyncHandler (async(req,res)=> {
   console.log("req바디임",req.body);
   const {Email,password} = req.body;
@@ -31,11 +32,25 @@ const loginUser = asyncHandler (async(req,res)=> {
   const isMatch = await bcrypt.compare(password,user.password);
   console.log(password,user.password );
   console.log(`isMatch = ${isMatch}`);
+=======
+const loginUser = asyncHandler(async(req,res)=> {
+  console.log(req.body);
+  const {Email,password} = req.body;
+  const user = await User.findOne({Email})
+  // console.log(user);
+  if(!user){
+    return res.status(401).send("일치하는 사용자가 없습니다.");
+  }
+  console.log(typeof(password), typeof(user.password))
+  const isMatch = await bcrypt.compare(password,user.password);
+  // console.log(user.Email, Email)
+>>>>>>> b47f2c8f1d80bfb607b1bff4cd9b99d38fd4b22d
   if(!isMatch){
     return res.status(401).send("비밀번호가 일치하지 않습니다.")
   }
   const token = jwt.sign({Email:user.Email},jwtSecret);
   res.cookie("token",token,{httpOnly:true});
+<<<<<<< HEAD
   res.redirect("/todo");
 });
 
@@ -47,6 +62,11 @@ const loginUser = asyncHandler (async(req,res)=> {
   
 //   res.render("dashboard", { Email }); // Render dashboard.ejs with Email passed as data
 // });
+=======
+  const contacts = await Todo.find();
+  res.render("todo",{todo:contacts});
+});
+>>>>>>> b47f2c8f1d80bfb607b1bff4cd9b99d38fd4b22d
 
 //@desc Logout
 //@route ? /
