@@ -1,18 +1,31 @@
-<%- include('./include/header') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="/styles/register.css"> <!-- 프론트엔드 CSS 파일 링크 -->
+</head>
 
 <!-- Main -->
 <main id="site-main">
 
-  <h3>사용자 등록</h3>
+  <h1 class="registertext">Register</h1>
 
   <form action="/register" method="POST" class="register">
-    <label for="name"><b>이름</b></label>
-    <input type="text" placeholder="이름" name="name" id="name">
-    <label for="Email"><b>이메일</b></label>
-    <input type="text" placeholder="이메일" name="Email" id="Email">
-    <label for="password"><b>비밀번호</b></label>
-    <input type="password" placeholder="비밀번호" name="password" id="password">
-    <input type="submit" value="등록" class="register-btn">
+    <div class="row">
+      <label id="Nametext" for="name"><b>이름</b></label>
+      <input type="text" placeholder="이름" name="name" id="name">
+    </div>
+    <div class="row">
+      <label id="Emailtext" class="label" for="email"><b>E-mail</b></label>
+      <input type="text" placeholder="이메일" name="email" id="email">
+    </div>
+    <div class="row">
+      <label class="label" for="password1"><b>Password</b></label>
+      <input type="password" placeholder="비밀번호" name="password" id="password">
+    </div>
+    <input type="submit" value=" O K " class="register-btn">
   </form>    
 </main>
 <!-- /Main -->
