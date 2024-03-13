@@ -2,7 +2,8 @@
 body {
   margin-left: 35%;
   margin-top: 5%;
-  padding-top: 70px;
+  padding-top: 30px;
+  padding-bottom: 30px;
   height: 380px;
   width: 400px;
   font-family: Arial, sans-serif;
@@ -19,7 +20,7 @@ form {
 }
 
 .logintext{
-  padding-bottom: 20px;
+  padding-bottom: 60px;
 }
 
 .row {
@@ -49,4 +50,6 @@ button {
   cursor: pointer;
   font-weight: 700;
   font-size: 15px;
+  border-radius: 4px;
+  margin-top: 30px;
 }
