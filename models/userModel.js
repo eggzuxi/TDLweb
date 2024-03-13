@@ -14,10 +14,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    password2: {
-      type: String,
-      required: true,
-    }
+    // password2: {
+    //   type: String,
+    //   required: true,
+    // }
   },
   { timestamps: true }
 );
