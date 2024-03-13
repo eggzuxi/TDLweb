@@ -15,11 +15,7 @@ const getRegister = (req,res) => {
 const registerUser = asyncHandler(async(req,res) => {
   const {name,Email,password} = req.body;
   const user = await User.create({name, Email, password});
-  user.name = name
-  user.Email = Email
-  user.password = password
-  user.save()
-  res.status(200).send(`${name}님, 환영합니다.`)
+  res.status(200).send(`${user.name}님, 환영합니다.`)
 });
 
 module.exports = {getRegister,registerUser};

@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-// const errorHandler = require("./middlewares/errorHandler");
+const errorHandler = require("./middlewares/errorHandler");
 const dbConnect = require("./config/dbConnect");
 const methodOverride = require("method-override");
 const app = express();
@@ -27,9 +27,6 @@ app.get("/", (req, res) => {
 
 app.use("/login",require("./routes/loginRoutes.js"));
 app.use("/register",require("./routes/registerRoutes.js"));
-
-// app.use("/",require("./routes/loginRoutes"));
-app.use("/contacts", require("./routes/contactRoutes"));
 app.use("/todo", require("./routes/todoRoutes"));
 
 app.listen(PORT, () => {
