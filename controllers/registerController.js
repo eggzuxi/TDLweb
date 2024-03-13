@@ -8,7 +8,7 @@ require("dotenv").config();
 //@desc get register
 //@route GET /
 const getRegister = (req,res) => {
-  res.render("join");
+  res.render("register");
 };
 
 //@desc Register User
