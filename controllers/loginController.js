@@ -36,4 +36,3 @@ const loginUser = asyncHandler (async(req,res)=> {
 });
 
 module.exports = {getLogin, loginUser};
-// logout
