@@ -8,8 +8,16 @@ body {
 
 #logo{
   margin-top: 60px;
-  margin-bottom: 200px;
+  margin-bottom: 50px;
+  font-weight: 900;
 }
+
+img{
+  width: 200px;
+  height: 200px;
+  margin-bottom: 50px;
+}
+
 
 
 #login{
@@ -50,6 +58,12 @@ button {
 
 #contents{
   font-size: 35px;
-  margin-top: 400px;
+  margin-top: 300px;
   margin-bottom: 10px;
+}
+
+
+hr{
+  width: 300px;
+  border: 2px solid rgb(194, 194, 194);
 }
