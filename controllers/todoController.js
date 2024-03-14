@@ -15,10 +15,7 @@ const getAllTodo = asyncHandler(async (req, res) => {
 
 const createTodo = asyncHandler(async(req,res)=>{
   const { title, body } = req.body;
-  const Email = req.cookies.Email;
   const decoded = jwt.verify(req.cookies.token,jwtSecret)
-  console.log(decoded);
-  console.log(Email);
   if(!title||!body){
     return res.status(400).send("필수값입력안함")
   }
