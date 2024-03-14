@@ -27,8 +27,8 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.use("/login",require("./routes/loginRoutes.js"));
-app.use("/register",require("./routes/registerRoutes.js"));
+app.use("/login",require("./routes/loginRoutes"));
+app.use("/register",require("./routes/registerRoutes"));
 app.use("/todo", require("./routes/todoRoutes"));
 
 app.listen(PORT, () => {
