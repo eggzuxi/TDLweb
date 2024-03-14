@@ -13,9 +13,9 @@ const getRegister = (req,res) => {
 //@desc Register User
 //@route POST /
 const registerUser = asyncHandler(async(req,res) => {
-  const {name,email,password} = req.body;
+  const {name,Email,password} = req.body;
   const hashedPassword = await bcrypt.hash(password,10);
-  const user = await User.create({name:name,Email:email,password:hashedPassword});
+  const user = await User.create({name:name,Email:Email,password:hashedPassword});
   res.status(201).send(`${user.name}님, 환영합니다.`)
 });
 

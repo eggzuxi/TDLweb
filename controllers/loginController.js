@@ -9,9 +9,9 @@ const jwtSecret = process.env.JW_SECRET;
 
 //@desc get login page
 //@route GET /
-const getLogin = (req,res) => {
+const getLogin = (req, res) => {
   res.render("login");
-}
+};
 
 //@desc Login User
 //@route POST /
@@ -35,5 +35,5 @@ const loginUser = asyncHandler (async(req,res)=> {
   res.redirect("/todo");
 });
 
-module.exports = {getLogin,loginUser};
+module.exports = {getLogin, loginUser};
 // logout
