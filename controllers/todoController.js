@@ -7,24 +7,22 @@ const jwtSecret = process.env.JW_SECRET
 
 
 const getAllTodo = asyncHandler(async (req, res) => {
-  const Email = req.cookies.Email;
-  const userTodos = await Todo.find({ Email: Email});
+  const decoded = jwt.verify(req.cookies.token,jwtSecret)
+  const userTodos = await Todo.find({ Email: decoded.Email});
   res.render("todo", { todo: userTodos });
 });
 
 
 const createTodo = asyncHandler(async(req,res)=>{
-  const Email = req.cookies;
+  const { title, body } = req.body;
+  const Email = req.cookies.Email;
   const decoded = jwt.verify(req.cookies.token,jwtSecret)
   console.log(decoded);
-  console.log(req.params)
-  
-  const title = "ERR";
-  const body = "ee";
+  console.log(Email);
   if(!title||!body){
     return res.status(400).send("필수값입력안함")
   }
-  const contact = await Todo.create({Email,title,body});
+  const contact = await Todo.create({Email:decoded.Email,title:title,body:body});
   res.status(201).send("리스트 추가");
 });
 

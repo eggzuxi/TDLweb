@@ -4,11 +4,25 @@
 <div id="todo-container">
   <h2>To-Do List</h2>
   <ul id="todo-list"></ul>
-  <form method="POST" id="add-todo">
-    <input type="text" name="title" id="new-todo" placeholder="Add a new task">
-    <input type="text" name="body" id="new-todo" placeholder="Add a new task">
+  <form action="/todo" method="POST" id="add-todo">
+    <input type="text" name="title" id="title" placeholder="제목">
+    <input type="text" name="body" id="body" placeholder="내용">
     <button id="add-button">Add</button>
   </form>
+  <% todo.forEach(todo => { %>
+    <tr>
+      <td><%= todo.title %></td>
+      <td><%= todo.body %></td>
+      <td>
+        <a href="#" class="btn update" title="수정">
+          <i class="fas fa-pencil-alt"></i>
+        </a>
+        <a href="#" class="btn delete" title="삭제">
+          <i class="fas fa-times"></i>
+        </a>                
+      </td>
+    </tr>
+  <% }); %>
 </div>
 <!-- /Main -->
 
