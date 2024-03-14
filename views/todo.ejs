@@ -9,20 +9,24 @@
     <input type="text" name="body" id="body" placeholder="내용">
     <button id="add-button">Add</button>
   </form>
-  <% todo.forEach(todo => { %>
-    <tr>
-      <td><%= todo.title %></td>
-      <td><%= todo.body %></td>
-      <td>
-        <a href="#" class="btn update" title="수정">
-          <i class="fas fa-pencil-alt"></i>
-        </a>
-        <a href="#" class="btn delete" title="삭제">
-          <i class="fas fa-times"></i>
-        </a>                
-      </td>
-    </tr>
-  <% }); %>
+  <table>
+    <% todo.forEach(todo => { %>
+      <tr>
+        <td>
+          <form action="/todo/<%=todo._id%>?_method=PUT" method="POST">
+            <input type="text" name="title" value="<%=todo.title%>">
+            <input type="text" name="body" value="<%=todo.body%>">
+            <input type="submit" value="수정">
+          </form>
+        </td>
+        <td>
+          <form action="/todo/<%=todo._id%>?_method=DELETE" method="POST">
+            <input type="submit" value="삭제">
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
 </div>
 <!-- /Main -->
 

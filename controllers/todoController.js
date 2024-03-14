@@ -28,18 +28,18 @@ const createTodo = asyncHandler(async(req,res)=>{
 
 const updateTodo = asyncHandler(async(req,res)=>{
   const id= req.params.id;
-  const {title,body}= req.body;
-  const contact = await Todo.findById(id);
-  contact.title = title
-  contact.body = body
-  contact.save()
-  res.status(200).send(`Update Contact for ID: ${req.params.id}`);
+  const {title, body} = req.body;
+  const toDo = await Todo.findByIdAndUpdate(id,{
+    title,
+    body,
+  });
+  res.status(200).redirect("/todo");
 });
 
 const deleteTodo = asyncHandler(async(req,res)=>{
-  const title = req.params.title;
-  const contact = await Todo.findByIdAndDelete(title);
-  res.status(200).send(`Delete Contact for Id:${req.params.title}`);
+  const id = req.params.id;
+  const toDo = await Todo.findByIdAndDelete(id);
+  res.status(200).redirect("/todo");
 });
 
 module.exports = {getAllTodo,createTodo,updateTodo,deleteTodo};
