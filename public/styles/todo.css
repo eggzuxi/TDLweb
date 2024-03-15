@@ -1,17 +1,22 @@
+h2{
+  margin-left: 2vw;
+}
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 20vh;
   width: 100vw;
+  
+}
+#body {
+  margin-left: 1vw;
 }
 
 #todo-container {
-  max-width: 40vw;
+  max-width: 50vw;
   width: 100%;
   background-color: #fff;
   border-radius: 8px;
@@ -36,9 +41,19 @@ body {
   margin-right: 10px;
 }
 
-#add-todo {
+.add-todo {
   display: flex;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 20px;
+  margin: 2vw 2vw;
+}
+
+.title {
+  flex: 1 0 2rem;
+}
+.body {
+  flex: 1 0 10rem;
 }
 
 #new-todo {
@@ -46,7 +61,7 @@ body {
   padding: 8px;
 }
 
-#add-button {
+.add-button {
   font-size: 18px;
   padding: 8px;
   margin-left: 10px;
@@ -56,3 +71,10 @@ body {
   border-radius: 5px;
   cursor: pointer;
 }
+
+/* .task {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+} */
+
