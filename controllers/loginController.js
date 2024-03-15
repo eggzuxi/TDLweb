@@ -16,7 +16,7 @@ const getLogin = (req, res) => {
 //@desc Login User
 //@route POST /
 const loginUser = asyncHandler (async(req,res)=> {
-  console.log("req바디임",req.body);
+  // console.log("req바디임",req.body);
   const {Email,password} = req.body;
 
   const user = await User.findOne({Email})
@@ -25,8 +25,8 @@ const loginUser = asyncHandler (async(req,res)=> {
     return res.status(401).send("일치하는 사용자가 없습니다.");
   }
   const isMatch = await bcrypt.compare(password,user.password);
-  console.log(password,user.password );
-  console.log(`isMatch = ${isMatch}`);
+  // console.log(password,user.password );
+  // console.log(`isMatch = ${isMatch}`);
   if(!isMatch){
     return res.status(401).send("비밀번호가 일치하지 않습니다.")
   }
@@ -36,4 +36,3 @@ const loginUser = asyncHandler (async(req,res)=> {
 });
 
 module.exports = {getLogin, loginUser};
-// logout
