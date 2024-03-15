@@ -16,27 +16,34 @@ const getAllTodo = asyncHandler(async (req, res) => {
 const createTodo = asyncHandler(async(req,res)=>{
   const { title, body } = req.body;
   const decoded = jwt.verify(req.cookies.token,jwtSecret)
+  const check = false;
   if(!title||!body){
     return res.status(400).send("필수값입력안함")
   }
-  const contact = await Todo.create({Email:decoded.Email,title:title,body:body});
-  res.status(201).send("리스트 추가");
+  const contact = await Todo.create({Email:decoded.Email,title:title,body:body,check:check});
+  res.status(201).redirect("/todo");
 });
 
 const updateTodo = asyncHandler(async(req,res)=>{
   const id= req.params.id;
-  const {title,body}= req.body;
-  const contact = await Todo.findById(id);
-  contact.title = title
-  contact.body = body
-  contact.save()
-  res.status(200).send(`Update Contact for ID: ${req.params.id}`);
+  const {title, body} = req.body;
+  const check = req.body.check === 'on';
+  console.log(title);
+  console.log(body);
+  console.log(check);
+  console.log(typeof(check));
+  const toDo = await Todo.findByIdAndUpdate(id,{
+    check,
+    title,
+    body,
+  });
+  res.status(200).redirect("/todo");
 });
 
 const deleteTodo = asyncHandler(async(req,res)=>{
-  const title = req.params.title;
-  const contact = await Todo.findByIdAndDelete(title);
-  res.status(200).send(`Delete Contact for Id:${req.params.title}`);
+  const id = req.params.id;
+  const toDo = await Todo.findByIdAndDelete(id);
+  res.status(200).redirect("/todo");
 });
 
 module.exports = {getAllTodo,createTodo,updateTodo,deleteTodo};

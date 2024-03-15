@@ -9,7 +9,7 @@ router
   .route("/")
   .get(checkLogin, getAllTodo)
   .post(checkLogin, createTodo)
-  .put(checkLogin, updateTodo)
-  .delete(checkLogin, deleteTodo)
-
+  // .put(checkLogin, updateTodo)
+  // .delete(checkLogin, deleteTodo)
+router.route("/:id").put(checkLogin,updateTodo).delete(checkLogin, deleteTodo)
 module.exports = router;

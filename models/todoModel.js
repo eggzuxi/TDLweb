@@ -13,6 +13,9 @@ const todoSchema = new mongoose.Schema(
     body :{
       type:String,
     },
+    check :{
+      type:Boolean,
+    }
   }
 );
 const Todo = mongoose.model("todo",todoSchema);
