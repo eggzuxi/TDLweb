@@ -1,85 +1,85 @@
-/* General styles */
+/* 전체 페이지에 대한 기본 스타일 설정 */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  margin: 0;
+  padding: 20px;
+}
+
+/* To-Do List 컨테이너 스타일 */
+#todo-container {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
-  margin-left: 2vw;
+  text-align: center;
+  color: #333;
 }
 
-/* Todo container */
-#todo-container {
-  max-width: 50vw;
-  width: 100%;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+/* 할 일 추가 폼 스타일 */
+form.add-todo {
   display: flex;
-  flex-direction: column; /* Added flex-direction to column */
-}
-
-/* Add todo form */
-.add-todo {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
   margin-bottom: 20px;
-  margin-left: 2vw;
-  margin-right: 2vw;
 }
 
-.title,
-.body {
-  flex: 1 0 50%;
+input[type="text"] {
+  flex: 1;
+  margin-right: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
-.add-button {
-  font-size: 18px;
-  padding: 8px;
+button.add-button {
+  padding: 10px 20px;
   background-color: #90B1DB;
-  color: #fff;
+  color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.add-button:hover {
-  background-color: #769cc0;
+button.add-button:hover {
+  background-color: #5193ea;
 }
 
-/* Task */
-.task {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
+/* 할 일 목록 스타일 */
+table {
   width: 100%;
-  margin-bottom: 2px;
-  margin-left: 2vw;
-  margin-right: 2vw;
+  table-layout: fixed;
 }
 
-.task-title,
-.task-body {
-  flex: 1 0 50%;
+td.task {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  align-items: center;
 }
 
-.task-edit,
-.task-delete {
-  font-size: 14px;
-  padding: 8px;
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+input.task-title, input.task-body {
+  flex: 1;
+  margin-right: 5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+input[type="submit"].task-edit, input[type="submit"].task-delete {
   border: none;
-  border-radius: 5px;
+  background-color: transparent;
   cursor: pointer;
-  background-color: #fff;
+  padding: 5px 10px;
 }
 
-.task-edit:hover,
-.task-delete:hover {
-  filter: brightness(0.8);
+input[type="submit"].task-edit:hover, input[type="submit"].task-delete:hover {
+  opacity: 0.7;
 }
