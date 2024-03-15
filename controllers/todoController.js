@@ -15,21 +15,21 @@ const getAllTodo = asyncHandler(async (req, res) => {
 
 const createTodo = asyncHandler(async(req,res)=>{
   const { title, body } = req.body;
-  const Email = req.cookies.Email;
   const decoded = jwt.verify(req.cookies.token,jwtSecret)
-  console.log(decoded);
-  console.log(Email);
+  const check = false;
   if(!title||!body){
     return res.status(400).send("필수값입력안함")
   }
-  const contact = await Todo.create({Email:decoded.Email,title:title,body:body});
-  res.status(201).send("리스트 추가");
+  const contact = await Todo.create({Email:decoded.Email,title:title,body:body,check:check});
+  res.status(201).redirect("/todo");
 });
 
 const updateTodo = asyncHandler(async(req,res)=>{
   const id= req.params.id;
   const {title, body} = req.body;
+  const check = req.body.check === 'on';
   const toDo = await Todo.findByIdAndUpdate(id,{
+    check,
     title,
     body,
   });

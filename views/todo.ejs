@@ -14,6 +14,7 @@
       <tr>
         <td>
           <form action="/todo/<%=todo._id%>?_method=PUT" class="task" method="POST">
+            <input type="checkbox" name="check" <% if (todo.check) { %> checked <% } %> >
             <input type="text" name="title" class="task-title" value="<%=todo.title%>">
             <input type="text" name="body" class="task-body" value="<%=todo.body%>">
             <input type="submit" value="수정">
@@ -28,6 +29,7 @@
     <% }) %>
   </table>
 </div>
+
 <!-- /Main -->
 
 <%- include('./include/footer') %>
