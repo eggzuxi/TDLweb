@@ -23,7 +23,7 @@ const createTodo = asyncHandler(async(req,res)=>{
     return res.status(400).send("필수값입력안함")
   }
   const contact = await Todo.create({Email:decoded.Email,title:title,body:body});
-  res.status(201).send("리스트 추가");
+  res.status(201).redirect("/todo");
 });
 
 const updateTodo = asyncHandler(async(req,res)=>{
