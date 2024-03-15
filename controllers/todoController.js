@@ -28,10 +28,6 @@ const updateTodo = asyncHandler(async(req,res)=>{
   const id= req.params.id;
   const {title, body} = req.body;
   const check = req.body.check === 'on';
-  console.log(title);
-  console.log(body);
-  console.log(check);
-  console.log(typeof(check));
   const toDo = await Todo.findByIdAndUpdate(id,{
     check,
     title,
